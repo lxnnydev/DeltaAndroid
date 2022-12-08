@@ -2,7 +2,7 @@
 -- Version: 3.2
 
 -- Instances:
-
+_G.is_deltaandroid_loaded = true
 local ScreenGui = Instance.new("ScreenGui")
 local Key = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
