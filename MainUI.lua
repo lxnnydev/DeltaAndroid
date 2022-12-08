@@ -385,6 +385,12 @@ end
 
 execute.MouseButton1Click:Connect(exec_event)
 
+local function exec_clipboard_event()
+	execute_script()
+end
+
+executeClipboard.MouseButton1Click:Connect(exec_clipboard_event)
+
 local function clear_event()
     Input.Text = ""
 end
