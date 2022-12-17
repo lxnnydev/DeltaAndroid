@@ -62,8 +62,6 @@ local UIAspectRatioConstraint_23 = Instance.new("UIAspectRatioConstraint")
 local UICorner_10 = Instance.new("UICorner")
 local UICorner_11 = Instance.new("UICorner")
 local UICorner_12 = Instance.new("UICorner")
-local execute_script = readclipboard_hideenv
-getgenv().readclipboard_hideenv = nil
 
 --Properties:
 
@@ -380,13 +378,13 @@ UICorner_12.Parent = Man
 
 
 local function exec_event()
-	execute_script(Input.Text)
+	loadstring(Input.Text)()
 end
 
 execute.MouseButton1Click:Connect(exec_event)
 
 local function exec_clipboard_event()
-	execute_script()
+	print"no"
 end
 
 executeClipboard.MouseButton1Click:Connect(exec_clipboard_event)
