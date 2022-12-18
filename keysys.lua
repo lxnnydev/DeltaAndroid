@@ -185,7 +185,7 @@ function confirmsavedkey()
 	if key == tostring(os.date("*t").yday) then
 		Key.Parent = nil
 		Key:Destroy()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/lxnnydev/DeltaAndroid/main/MainUI.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/lxnnydev/DeltaAndroid/testing/MainUI.lua"))()
 		game.StarterGui:SetCore("SendNotification", 
 		{
 			Title = "Delta Android";
