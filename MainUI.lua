@@ -408,6 +408,12 @@ TextButton_3.MouseButton1Click:Connect(credits_event)
 
 local function unlockfps_event()
     setfpscap(0)
+	    game.StarterGui:SetCore("SendNotification", 
+    {
+    Title = "Delta Android";
+    Text = "Successfully unlocked FPS";
+    Duration = 5;
+    })
 end
 
 TextButton_2.MouseButton1Click:Connect(unlockfps_event)
