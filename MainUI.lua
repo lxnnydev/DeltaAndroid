@@ -200,7 +200,7 @@ TextButton.Size = UDim2.new(0.311265826, 0, 1.01569855, 0)
 TextButton.Font = Enum.Font.Arial
 TextButton.Text = "Join Our Discord"
 TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton.TextSize = 20.000
+TextButton.TextSize = 30.000
 
 UIAspectRatioConstraint_12.Parent = TextButton
 UIAspectRatioConstraint_12.AspectRatio = 3.740
@@ -215,7 +215,7 @@ TextButton_2.Size = UDim2.new(0.211394414, 0, 1.01569855, 0)
 TextButton_2.Font = Enum.Font.Arial
 TextButton_2.Text = "Unlock FPS"
 TextButton_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_2.TextSize = 20.000
+TextButton_2.TextSize = 30.000
 
 UIAspectRatioConstraint_13.Parent = TextButton_2
 UIAspectRatioConstraint_13.AspectRatio = 2.540
@@ -231,7 +231,7 @@ TextButton_3.Size = UDim2.new(0.213058949, 0, 1.01569855, 0)
 TextButton_3.Font = Enum.Font.Arial
 TextButton_3.Text = "Credits"
 TextButton_3.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_3.TextSize = 20.000
+TextButton_3.TextSize = 30.000
 
 UIAspectRatioConstraint_14.Parent = TextButton_3
 UIAspectRatioConstraint_14.AspectRatio = 2.560
@@ -268,7 +268,7 @@ clear.Size = UDim2.new(0.214723468, 0, 1.01569855, 0)
 clear.Font = Enum.Font.Arial
 clear.Text = "Clear"
 clear.TextColor3 = Color3.fromRGB(255, 255, 255)
-clear.TextSize = 20.000
+clear.TextSize = 30.000
 
 UIAspectRatioConstraint_17.Parent = clear
 UIAspectRatioConstraint_17.AspectRatio = 2.580
@@ -284,7 +284,7 @@ execute.Size = UDim2.new(0.211394414, 0, 1.01569855, 0)
 execute.Font = Enum.Font.Arial
 execute.Text = "Execute"
 execute.TextColor3 = Color3.fromRGB(255, 255, 255)
-execute.TextSize = 20.000
+execute.TextSize = 30.000
 
 UIAspectRatioConstraint_18.Parent = execute
 UIAspectRatioConstraint_18.AspectRatio = 2.540
@@ -300,7 +300,7 @@ executeClipboard.Size = UDim2.new(0.311265826, 0, 1.01569855, 0)
 executeClipboard.Font = Enum.Font.Arial
 executeClipboard.Text = "Execute Clipboard"
 executeClipboard.TextColor3 = Color3.fromRGB(255, 255, 255)
-executeClipboard.TextSize = 20.000
+executeClipboard.TextSize = 30.000
 
 UIAspectRatioConstraint_19.Parent = executeClipboard
 UIAspectRatioConstraint_19.AspectRatio = 3.740
@@ -317,7 +317,7 @@ paste.Size = UDim2.new(0.213058949, 0, 1.01569855, 0)
 paste.Font = Enum.Font.Arial
 paste.Text = "Paste"
 paste.TextColor3 = Color3.fromRGB(255, 255, 255)
-paste.TextSize = 20.000
+paste.TextSize = 30.000
 
 UIAspectRatioConstraint_20.Parent = paste
 UIAspectRatioConstraint_20.AspectRatio = 2.560
