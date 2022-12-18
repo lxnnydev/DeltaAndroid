@@ -208,7 +208,7 @@ function confirmkey()
 		Key.Parent = nil
 		Key:Destroy()
     writefile("deltanadroid.key", tostring(os.date("*t").yday))
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/lxnnydev/DeltaAndroid/main/MainUI.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/lxnnydev/DeltaAndroid/testing/MainUI.lua"))()
 		game.StarterGui:SetCore("SendNotification", 
 		{
 			Title = "Delta Android";
