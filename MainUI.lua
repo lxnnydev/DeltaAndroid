@@ -342,7 +342,7 @@ Input.ClearTextOnFocus = false
 Input.Font = Enum.Font.Roboto
 Input.Text = ""
 Input.TextColor3 = Color3.fromRGB(255, 255, 255)
-Input.TextSize = 14.000
+Input.TextSize = 20.000
 Input.TextTransparency = 1.000
 Input.TextWrapped = true
 Input.RichText = true
@@ -362,7 +362,7 @@ Display.Size = UDim2.new(0.97868371, 0, 0.95734328, 0)
 Display.Font = Enum.Font.Roboto
 Display.Text = ""
 Display.TextColor3 = Color3.fromRGB(255, 255, 255)
-Display.TextSize = 14.000
+Display.TextSize = 20.000
 Display.TextXAlignment = Enum.TextXAlignment.Left
 Display.TextYAlignment = Enum.TextYAlignment.Top
 Display.RichText = true
@@ -592,3 +592,41 @@ local function InputChanged()
 end
 
 Input:GetPropertyChangedSignal("Text"):Connect(InputChanged)
+
+local gui = Man 
+
+        local dragging
+        local dragInput
+        local dragStart
+        local startPos
+
+        local function update(input)
+        	local delta = input.Position - dragStart
+        	gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+
+        gui.InputBegan:Connect(function(input)
+        	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        		dragging = true
+        		dragStart = input.Position
+        		startPos = gui.Position
+        		
+        		input.Changed:Connect(function()
+        			if input.UserInputState == Enum.UserInputState.End then
+        				dragging = false
+        			end
+        		end)
+        	end
+        end)
+
+        gui.InputChanged:Connect(function(input)
+        	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        		dragInput = input
+        	end
+        end)
+
+        UserInputService.InputChanged:Connect(function(input)
+        	if input == dragInput and dragging then
+        		update(input)
+        	end
+        end)
