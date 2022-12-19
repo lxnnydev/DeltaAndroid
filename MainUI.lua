@@ -69,6 +69,7 @@ ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 openclose.Name = "open/close"
 openclose.Parent = ScreenGui
+openclose.Active = true
 openclose.AnchorPoint = Vector2.new(1, 1)
 openclose.BackgroundColor3 = Color3.fromRGB(4, 26, 28)
 openclose.BackgroundTransparency = 0.160
@@ -442,21 +443,21 @@ local settingsb = panel.settings
 local openClose = main.Parent["open/close"]
 local openCloseButton = openClose.logo
 
-home.MouseButton1Down:Connect(function()
+home.MouseButton1Click:Connect(function()
     execution.Visible = true
     settings.Visible = false
 end)
 
-settingsb.MouseButton1Down:Connect(function()
+settingsb.MouseButton1Click:Connect(function()
     execution.Visible = false
     settings.Visible = true
 end)
 
-close.MouseButton1Down:Connect(function()
+close.MouseButton1Click:Connect(function()
     main.Visible = false
 end)
 
-openCloseButton.MouseButton1Down:Connect(function()
+openCloseButton.MouseButton1Click:Connect(function()
     main.Visible = true
 end)
 
@@ -477,7 +478,91 @@ local Colors = {
 	[Color3.fromRGB(92, 144, 223)] = {
 		"warn",
 		"print",
+		"HttpGet",
+		"Drawing.new",
+		"cleardrawcache",
+		"getrenderproperty",
+		"isrenderobj",
+		"setrenderproperty",
+		"WebSocket.connect",
+		"Connect",
+		"invalidate",
+		"iscached",
+		"replace",
+		"cloneref",
+		"compareinstances",
+		"checkcaller",
+		"hookmetamethod",
+		"clonefunction",
+		"getcallingscript",
+		"hookfunction",
+		"iscclosure",
+		"islclosure",
+		"isexecutorclosure",
 		"loadstring",
+		"newcclosure",
+		"crypt.base64encode",
+		"crypt.base64decode",
+		"crypt.encrypt",
+		"crypt.decrypt",
+		"crypt.generatebytes",
+		"crypt.generatekey",
+		"crypt.hash",
+		"debug.getconstant",
+		"debug.getconstants",
+		"debug.getinfo",
+		"debug.getproto",
+		"debug.getprotos",
+		"debug.getstack",
+		"debug.getupvalue",
+		"debug.getupvalues",
+		"debug.setconstant",
+		"debug.setstack",
+		"readfile",
+		"listfiles",
+		"writefile",
+		"makefolder",
+		"appendfile",
+		"isfile",
+		"isfolder",
+		"delfile",
+		"delfolder",
+		"loadfile",
+		"dofile",
+		"isrbxactive",
+		"mouse1click",
+		"mouse1press",
+		"mouse1release",
+		"mouse2click",
+		"mouse2press",
+		"mouse2release",
+		"mousemoveabs",
+		"mousemoverel",
+		"mousescroll",
+		"fireclickdetector",
+		"getcallbackvalue",
+		"getconnections",
+		"getcustomasset",
+		"gethiddenproperty",
+		"gethui",
+		"getinstances",
+		"getnilinstances",
+		"isscriptable",
+		"sethiddenproperty",
+		"setrbxclipboard",
+		"setscriptable",
+		"fireclickdetector",
+		"getcallbackvalue",
+		"getconnections",
+		"getcustomasset",
+		"gethiddenproperty",
+		"gethui",
+		"getinstances",
+		"getnilinstances",
+		"isscriptable",
+		"sethiddenproperty",
+		"setrbxclipboard",
+		"setscriptable",
 	},
 	
 	[Color3.fromRGB(144, 93, 208)] = {
