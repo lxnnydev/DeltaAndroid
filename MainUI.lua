@@ -1,4 +1,3 @@
-
 -- Gui to Lua
 -- Version: 3.2
 
@@ -342,7 +341,7 @@ Input.ClearTextOnFocus = false
 Input.Font = Enum.Font.Roboto
 Input.Text = ""
 Input.TextColor3 = Color3.fromRGB(255, 255, 255)
-Input.TextSize = 20.000
+Input.TextSize = 14.000
 Input.TextTransparency = 1.000
 Input.TextWrapped = true
 Input.RichText = true
@@ -362,7 +361,7 @@ Display.Size = UDim2.new(0.97868371, 0, 0.95734328, 0)
 Display.Font = Enum.Font.Roboto
 Display.Text = ""
 Display.TextColor3 = Color3.fromRGB(255, 255, 255)
-Display.TextSize = 20.000
+Display.TextSize = 14.000
 Display.TextXAlignment = Enum.TextXAlignment.Left
 Display.TextYAlignment = Enum.TextYAlignment.Top
 Display.RichText = true
@@ -478,95 +477,11 @@ local Colors = {
 	[Color3.fromRGB(92, 144, 223)] = {
 		"warn",
 		"print",
-		"HttpGet",
-		"Drawing.new",
-		"cleardrawcache",
-		"getrenderproperty",
-		"isrenderobj",
-		"setrenderproperty",
-		"WebSocket.connect",
-		"Connect",
-		"invalidate",
-		"iscached",
-		"replace",
-		"cloneref",
-		"compareinstances",
-		"checkcaller",
-		"hookmetamethod",
-		"clonefunction",
-		"getcallingscript",
-		"hookfunction",
-		"iscclosure",
-		"islclosure",
-		"isexecutorclosure",
 		"loadstring",
-		"newcclosure",
-		"crypt.base64encode",
-		"crypt.base64decode",
-		"crypt.encrypt",
-		"crypt.decrypt",
-		"crypt.generatebytes",
-		"crypt.generatekey",
-		"crypt.hash",
-		"debug.getconstant",
-		"debug.getconstants",
-		"debug.getinfo",
-		"debug.getproto",
-		"debug.getprotos",
-		"debug.getstack",
-		"debug.getupvalue",
-		"debug.getupvalues",
-		"debug.setconstant",
-		"debug.setstack",
-		"readfile",
-		"listfiles",
-		"writefile",
-		"makefolder",
-		"appendfile",
-		"isfile",
-		"isfolder",
-		"delfile",
-		"delfolder",
-		"loadfile",
-		"dofile",
-		"isrbxactive",
-		"mouse1click",
-		"mouse1press",
-		"mouse1release",
-		"mouse2click",
-		"mouse2press",
-		"mouse2release",
-		"mousemoveabs",
-		"mousemoverel",
-		"mousescroll",
-		"fireclickdetector",
-		"getcallbackvalue",
-		"getconnections",
-		"getcustomasset",
-		"gethiddenproperty",
-		"gethui",
-		"getinstances",
-		"getnilinstances",
-		"isscriptable",
-		"sethiddenproperty",
-		"setrbxclipboard",
-		"setscriptable",
-		"fireclickdetector",
-		"getcallbackvalue",
-		"getconnections",
-		"getcustomasset",
-		"gethiddenproperty",
-		"gethui",
-		"getinstances",
-		"getnilinstances",
-		"isscriptable",
-		"sethiddenproperty",
-		"setrbxclipboard",
-		"setscriptable",
 	},
 	
 	[Color3.fromRGB(144, 93, 208)] = {
-		"!","@","#","&","*","-","+","(",")"
+		"!","@","#","&","*","-","+"
 	}
 }
 
