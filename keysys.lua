@@ -69,7 +69,7 @@ keyBox.ClipsDescendants = true
 keyBox.Position = UDim2.new(0.0184762254, 0, 0.327122301, 0)
 keyBox.Size = UDim2.new(0.982183516, 0, 0.686008453, 0)
 keyBox.Font = Enum.Font.Arial
-keyBox.PlaceholderText = "●●●●●●●●●●"
+keyBox.PlaceholderText = "●●●●●●●●●●●●●●●●●●●●"
 keyBox.Text = ""
 keyBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 keyBox.TextSize = 14.000
@@ -242,5 +242,19 @@ function getkey()
 end
 
 getKey.MouseButton1Click:Connect(getkey)
+
+local function joindiscord_event()
+    setclipboard("https://discord.gg/deltaex")
+    game.StarterGui:SetCore("SendNotification", 
+    {
+    Title = "Delta Android";
+    Text = "Discord invite copied to cliboard";
+    Duration = 5;
+    })
+    
+end
+
+
+joinDiscord.MouseButton1Click:Connect(joindiscord_event)
 
 confirmsavedkey()
