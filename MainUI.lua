@@ -2,6 +2,7 @@
 -- Version: 3.2
 
 -- Instances:
+makefolder("d_android_script_dir")
 
 local ScreenGui = Instance.new("ScreenGui")
 local Man = Instance.new("Frame")
@@ -395,7 +396,7 @@ TextLabel.ClipsDescendants = true
 TextLabel.Position = UDim2.new(0, 0, 0.827485442, 0)
 TextLabel.Size = UDim2.new(0.127873585, 0, 0.143274873, 0)
 TextLabel.Font = Enum.Font.Arial
-TextLabel.Text = "Made By FluxTeam"
+TextLabel.Text = "Powered\\nBy\\nFluxTeam"
 TextLabel.TextColor3 = Color3.fromRGB(192, 192, 192)
 TextLabel.TextSize = 14.000
 
@@ -485,7 +486,7 @@ run.BackgroundTransparency = 0.700
 run.Position = UDim2.new(0.807583034, 0, 0.0891512036, 0)
 run.Size = UDim2.new(0.175541461, 0, 0.81752336, 0)
 run.Font = Enum.Font.Arial
-run.Text = "Run"
+run.Text = "Execute"
 run.TextColor3 = Color3.fromRGB(255, 255, 255)
 run.TextSize = 20.000
 
