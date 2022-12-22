@@ -396,7 +396,7 @@ TextLabel.ClipsDescendants = true
 TextLabel.Position = UDim2.new(0, 0, 0.827485442, 0)
 TextLabel.Size = UDim2.new(0.127873585, 0, 0.143274873, 0)
 TextLabel.Font = Enum.Font.Arial
-TextLabel.Text = "Powered\\nBy\\nFluxTeam"
+TextLabel.Text = "Powered\nBy\nFluxTeam"
 TextLabel.TextColor3 = Color3.fromRGB(192, 192, 192)
 TextLabel.TextSize = 14.000
 
