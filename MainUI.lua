@@ -757,7 +757,6 @@ local function list_all_scripts()
 		end)
 		cloned.Parent = displayFrame.ScrollingFrame
 	end
-	displayFrame.ScrollingFrame.CanvasSize = UDim2.new(0,displayFrame.ScrollingFrame.UiListLayout.AbsoluteContentSize.X,0,0)
 end
 
 
