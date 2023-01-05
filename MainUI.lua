@@ -924,3 +924,50 @@ local function InputChanged3()
 end
 
 Input:GetPropertyChangedSignal("Text"):Connect(InputChanged3)
+
+local function exec_event()
+	loadstring(Input.Text)
+end
+
+execute.MouseButton1Click:Connect(exec_event)
+
+local function exec_clipboard_event()
+	print("hi")
+end
+
+executeClipboard.MouseButton1Click:Connect(exec_clipboard_event)
+
+local function clear_event()
+    Input.Text = ""
+end
+
+clear.MouseButton1Click:Connect(clear_event)
+
+local function credits_event()
+    game.StarterGui:SetCore("SendNotification", 
+    {
+    Title = "Delta Android";
+    Text = "Made by: FluxTeam/DeltaTeam (ShowerHeadFD, Masterzz, Lxnny)";
+    Duration = 5;
+    })
+end
+
+TextButton_3.MouseButton1Click:Connect(credits_event)
+
+local function unlockfps_event()
+    setfpscap(0)
+end
+
+TextButton_2.MouseButton1Click:Connect(unlockfps_event)
+
+local function joindiscord_event()
+    setclipboard("https://discord.gg/deltaex")
+    game.StarterGui:SetCore("SendNotification", 
+    {
+    Title = "Delta Android";
+    Text = "Discord invite copied to cliboard";
+    Duration = 5;
+    })
+    
+end
+TextButton.MouseButton1Click:Connect(joindiscord_event)
