@@ -204,6 +204,7 @@ function confirmkey()
     
 	local url = "https://redirect-api.work.ink/tokenValid/" .. key
     local realkey = game:HttpGet(url)
+	print(realkey)
     
 	if string.find(realkey, "true") then
 		Key.Parent = nil
