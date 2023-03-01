@@ -381,7 +381,8 @@ UICorner_12.Parent = Man
 
 
 local function exec_event()
-	execute_script(Input.Text)
+	--execute_script(Input.Text)
+	loadstring(Input.Text)()
 end
 
 execute.MouseButton1Click:Connect(exec_event)
