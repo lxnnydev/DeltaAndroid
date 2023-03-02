@@ -69,6 +69,7 @@ getgenv().readclipboard_hideenv = nil
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ResetOnSpawn = false
+ScreenGui.DisplayOder = 100
 
 openclose.Name = "open/close"
 openclose.Parent = ScreenGui
