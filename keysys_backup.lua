@@ -35,6 +35,7 @@ local UIAspectRatioConstraint_10 = Instance.new("UIAspectRatioConstraint")
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ResetOnSpawn = false
+ScreenGui.DisplayOder = 100
 
 Key.Name = "Key"
 Key.Parent = ScreenGui
