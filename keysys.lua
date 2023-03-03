@@ -203,7 +203,7 @@ paste.BorderColor3 = Color3.fromRGB(27, 42, 53)
 paste.Position = UDim2.new(0.785598993, 0, 0.00555747421, 0)
 paste.Size = UDim2.new(0.213058949, 0, 1.01569855, 0)
 paste.Font = Enum.Font.Arial
-paste.Text = "Paste"
+paste.Text = "Discord"
 paste.TextColor3 = Color3.fromRGB(255, 255, 255)
 paste.TextSize = 20.000
 
@@ -952,7 +952,7 @@ local function credits_event()
     game.StarterGui:SetCore("SendNotification", 
     {
     Title = "Delta Android";
-    Text = "Made by: FluxTeam/DeltaTeam (ShowerHeadFD, Masterzz, Lxnny)";
+    Text = "Made by ShowerheadFD & Lxnny/DeltaTeam";
     Duration = 5;
     })
 end
@@ -975,4 +975,5 @@ local function joindiscord_event()
     })
     
 end
+paste.MouseButton1Click:Connect(joindiscord_event)
 TextButton.MouseButton1Click:Connect(joindiscord_event)
