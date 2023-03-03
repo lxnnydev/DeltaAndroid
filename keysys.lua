@@ -957,7 +957,7 @@ local function credits_event()
     })
 end
 
-TextButton_3.MouseButton1Click:Connect(credits_event)
+TextButton.MouseButton1Click:Connect(credits_event)
 
 local function unlockfps_event()
     setfpscap(0)
@@ -976,4 +976,4 @@ local function joindiscord_event()
     
 end
 paste.MouseButton1Click:Connect(joindiscord_event)
-TextButton.MouseButton1Click:Connect(joindiscord_event)
+TextButton_3.MouseButton1Click:Connect(joindiscord_event)
