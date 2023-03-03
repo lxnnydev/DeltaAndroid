@@ -116,7 +116,7 @@ getgenv().readclipboard_hideenv = nil
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Parent = game:WaitForChild("CoreGui")
 ScreenGui.ResetOnSpawn = false
 ScreenGui.DisplayOrder = 100
 
