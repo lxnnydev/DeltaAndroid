@@ -931,7 +931,7 @@ end
 Input:GetPropertyChangedSignal("Text"):Connect(InputChanged3)
 
 local function exec_event()
-	loadstring(Input.Text)()
+	readclipboard_hideenv(Input.Text)
 end
 
 execute.MouseButton1Click:Connect(exec_event)
