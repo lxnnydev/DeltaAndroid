@@ -956,7 +956,11 @@ local function click()
 	local script = Instance.new('LocalScript', ImageButton) 
 	
 	script.Parent.Activated:Connect(function() 
-		main.Visible = true
+		if main.Visible == true then
+			main.Visible = false
+		else
+			main.Visible = true
+		end
 	end)
 end
 
