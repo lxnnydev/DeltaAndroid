@@ -1,7 +1,6 @@
--- Gui to Lua
--- Version: 3.2
+-- main ui stuff:
 
--- Instances:
+
 makefolder("d_android_script_dir")
 
 local ScreenGui = Instance.new("ScreenGui")
@@ -106,11 +105,7 @@ local add2 = Instance.new("TextButton")
 local UICorner_22 = Instance.new("UICorner")
 local UIAspectRatioConstraint_37 = Instance.new("UIAspectRatioConstraint")
 local UICorner_23 = Instance.new("UICorner")
-local openclose = Instance.new("Frame")
-local logo_2 = Instance.new("ImageButton")
-local UIAspectRatioConstraint_38 = Instance.new("UIAspectRatioConstraint")
-local UICorner_24 = Instance.new("UICorner")
-local UIAspectRatioConstraint_39 = Instance.new("UIAspectRatioConstraint")
+
 local execute_script = readclipboard_hideenv
 getgenv().readclipboard_hideenv = nil
 
@@ -664,35 +659,6 @@ UIAspectRatioConstraint_37.AspectRatio = 3.700
 
 UICorner_23.Parent = dialog
 
-openclose.Name = "open/close"
-openclose.Parent = ScreenGui
-openclose.AnchorPoint = Vector2.new(1, 1)
-openclose.BackgroundColor3 = Color3.fromRGB(4, 26, 28)
-openclose.BackgroundTransparency = 0.160
-openclose.Position = UDim2.new(1, 0, 1, 0)
-openclose.Size = UDim2.new(0.0584965572, 0, 0.119359769, 0)
-openclose.Draggable = true
-openclose.Active = true
-openclose.Selectable = true
-
-
-logo_2.Name = "logo"
-logo_2.Parent = openclose
-logo_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-logo_2.BackgroundTransparency = 1.000
-logo_2.BorderSizePixel = 0
-logo_2.Position = UDim2.new(0.063968569, 0, 0.0581381023, 0)
-logo_2.Size = UDim2.new(0.873349726, 0, 0.880098641, 0)
-logo_2.Image = "http://www.roblox.com/asset/?id=11770670481"
-
-UIAspectRatioConstraint_38.Parent = logo_2
-UIAspectRatioConstraint_38.AspectRatio = 1.002
-
-UICorner_24.Parent = openclose
-
-UIAspectRatioConstraint_39.Parent = openclose
-UIAspectRatioConstraint_39.AspectRatio = 1.010
-
 local main = Man
 local panel = main.Panel
 local settings = main.Settings
@@ -702,8 +668,6 @@ local home = panel.Home
 local savebtn = panel.scripts
 local close = panel.close
 local settingsb = panel.settings
-local openClose = main.Parent["open/close"]
-local openCloseButton = openClose.logo
 
 home.MouseButton1Down:Connect(function()
 	execution.Visible = true
@@ -725,10 +689,6 @@ end)
 
 close.MouseButton1Down:Connect(function()
 	main.Visible = false
-end)
-
-openCloseButton.MouseButton1Down:Connect(function()
-	main.Visible = true
 end)
 
 local init = add
@@ -985,3 +945,74 @@ local function joindiscord_event()
 end
 paste.MouseButton1Click:Connect(joindiscord_event)
 TextButton_3.MouseButton1Click:Connect(joindiscord_event)
+
+
+-- logo stuff:
+
+local ImageButton = Instance.new("ImageButton")
+local UISizeConstraint = Instance.new("UISizeConstraint")
+
+local function click() 
+	local script = Instance.new('LocalScript', ImageButton) 
+	
+	script.Parent.Activated:Connect(function() 
+		main.Visible = true
+	end)
+end
+
+ImageButton.Parent = ScreenGui
+ImageButton.AnchorPoint = Vector2.new(1, 1)
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton.BackgroundTransparency = 1.000
+ImageButton.Position = UDim2.new(1, -2, 1, -2)
+ImageButton.Size = UDim2.new(0.28306821, 0, 0.46784091, 0)
+ImageButton.Image = "http://www.roblox.com/asset/?id=12684878132"
+ImageButton.ImageTransparency = 0.160
+
+UISizeConstraint.Parent = ImageButton
+UISizeConstraint.MaxSize = Vector2.new(50, 50)
+UISizeConstraint.MinSize = Vector2.new(50, 50)
+
+local function drag()
+	local script = Instance.new('LocalScript', ImageButton)
+
+	local UIS = game:GetService("UserInputService")
+	local function dragify(Frame)
+		local dragToggle = nil
+		local dragSpeed = 0
+		local dragInput = nil
+		local dragStart = nil
+		local dragPos = nil
+		local function updateInput(input)
+			local Delta = input.Position - dragStart
+			local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+			game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.25), {Position = Position}):Play()
+		end
+		Frame.InputBegan:Connect(function(input)
+			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+				dragToggle = true
+				dragStart = input.Position
+				startPos = Frame.Position
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragToggle = false
+					end
+				end)
+			end
+		end)
+		Frame.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end)
+		game:GetService("UserInputService").InputChanged:Connect(function(input)
+			if input == dragInput and dragToggle then
+				updateInput(input)
+			end
+		end)
+	end
+
+	dragify(script.Parent)
+end
+coroutine.wrap(drag)()
+coroutine.wrap(click)()
