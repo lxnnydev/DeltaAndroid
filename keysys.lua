@@ -127,6 +127,9 @@ Man.BackgroundColor3 = Color3.fromRGB(4, 26, 28)
 Man.BackgroundTransparency = 0.160
 Man.Position = UDim2.new(0.0413942784, 0, 0.0707155168, 0)
 Man.Size = UDim2.new(0.976542175, 0, 0.854496777, 0)
+Man.Draggable = true
+Man.Active = true
+Man.Selectable = true
 
 UICorner.Parent = Man
 
@@ -136,6 +139,7 @@ Executon.BackgroundColor3 = Color3.fromRGB(4, 26, 28)
 Executon.BackgroundTransparency = 1.000
 Executon.Size = UDim2.new(1.00000012, 0, 1, 0)
 Executon.Visible = true
+
 
 UICorner_2.Parent = Executon
 
@@ -667,6 +671,10 @@ openclose.BackgroundColor3 = Color3.fromRGB(4, 26, 28)
 openclose.BackgroundTransparency = 0.160
 openclose.Position = UDim2.new(1, 0, 1, 0)
 openclose.Size = UDim2.new(0.0584965572, 0, 0.119359769, 0)
+openclose.Draggable = true
+openclose.Active = true
+openclose.Selectable = true
+
 
 logo_2.Name = "logo"
 logo_2.Parent = openclose
