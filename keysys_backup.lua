@@ -176,58 +176,52 @@ logo.Image = "http://www.roblox.com/asset/?id=11770670481"
 
 UIAspectRatioConstraint_10.Parent = logo
 
+function loadmainui()
+	Key.Parent = nil
+	Key:Destroy()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/lxnnydev/DeltaAndroid/main/MainUI.lua"))()
+
+end
+
 if not isfile("deltanadroid.key") then
     writefile("deltanadroid.key", "dontdelete")
 end
 
 function confirmsavedkey()
-	
-	local key = readfile("deltanadroid.key")
-     
-	if key == tostring(os.date("*t").yday) then
-		Key.Parent = nil
-		Key:Destroy()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/lxnnydev/DeltaAndroid/main/MainUI.lua"))()
-		game.StarterGui:SetCore("SendNotification", 
-		{
-			Title = "Delta Android";
-			Text = "Valid Saved Key!";
-			Duration = 4;
-		})
+	if isfile("deltanadroid.key") then
+		local key = readfile("deltanadroid.key")
+		if key == tostring(os.date("*t").yday) then
+		loadmainui()
+		end
 	end
-	
-	
+
+	if isfile("adminkey.delta") then
+		local key = readfile("adminkey.delta")
+		local response = game:HttpGet("https://testthing.lennymayer.repl.co/?key=" .. key)
+		if string.find(response, "valid") then
+			loadmainui()
+		end
+	end
 end
 
 function confirmkey()
-	
 	local key = keyBox.Text
-    
-	local url = "https://redirect-api.work.ink/tokenValid/" .. key
-    local realkey = game:HttpGet(url)
-	print(realkey)
-    
-	if string.find(realkey, "true") then
-		Key.Parent = nil
-		Key:Destroy()
-    writefile("deltanadroid.key", tostring(os.date("*t").yday))
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/lxnnydev/DeltaAndroid/main/MainUI.lua"))()
-		game.StarterGui:SetCore("SendNotification", 
-		{
-			Title = "Delta Android";
-			Text = "Valid Key!";
-			Duration = 4;
-		})
-    else
-        game.StarterGui:SetCore("SendNotification", 
-		{
-			Title = "Delta Android";
-			Text = "Invalid Key!";
-			Duration = 4;
-		})
+
+	if string.find(key, "Delta") then
+		local response = game:HttpGet("https://testthing.lennymayer.repl.co/?key=" .. key)
+		if string.find(response, "valid") then
+			writefile("adminkey.delta", key)
+			loadmainui()
+		end
+	else
+		local url = "https://redirect-api.work.ink/tokenValid/" .. key
+		local realkey = game:HttpGet(url)
+		if string.find(realkey, "true") then
+			writefile("deltanadroid.key", tostring(os.date("*t").yday))
+			loadmainui()
+		end
 	end
-	
-	
+
 end
 
 verifyKey.MouseButton1Click:Connect(confirmkey)
