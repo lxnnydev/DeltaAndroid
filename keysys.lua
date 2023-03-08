@@ -734,7 +734,6 @@ end
 
 
 
-list_all_scripts()
 
 init.MouseButton1Down:Connect(function()
 	displayFrame.Visible = false
@@ -945,6 +944,8 @@ local function joindiscord_event()
 end
 paste.MouseButton1Click:Connect(joindiscord_event)
 TextButton_3.MouseButton1Click:Connect(joindiscord_event)
+
+list_all_scripts()
 
 
 -- logo stuff:
