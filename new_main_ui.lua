@@ -7,6 +7,10 @@
  Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER
 ]=]
 
+local execute_script = readclipboard_hideenv
+getgenv().readclipboard_hideenv = nil
+
+
 -- Instances: 310 | Scripts: 28 | Modules: 24
 local G2L = {};
 
@@ -4752,7 +4756,7 @@ local function C_58()
 		newhub.Visible = true
 		scriptname.Text = name
 		execbutton.MouseButton1Click:Connect(function()
-			loadstring(source)()
+			execute_script(source)()
 		end)
 		delbutton.MouseButton1Click:Connect(function()
 			newhub:Destroy()
@@ -4763,7 +4767,7 @@ local function C_58()
     for _, file in ipairs(listfiles("d_android_script_dir")) do
         print(file)
         print(readfile(file))
-        AddScript(file, readfile(file), true)
+        AddScript(file:sub(22, #file), readfile(file), true)
     end
 
 
@@ -4828,7 +4832,7 @@ local function C_9c()
 	local script = G2L["9c"];
 	local btn = script.Parent
 	btn.MouseButton1Click:Connect(function()
-		loadstring(script.Parent.Parent.Parent.TextboxBar.Editor.Scroll.Source.Text)()
+		execute_script(script.Parent.Parent.Parent.TextboxBar.Editor.Scroll.Source.Text)()
 	end)
 end;
 task.spawn(C_9c);
@@ -4907,7 +4911,7 @@ local function C_fd()
 		print("clicked")
 
 		execute.MouseButton1Click:Connect(function()
-			loadstring(source)()
+			execute_script(source)()
 		end)
         copy.MouseButton1Click:Connect(function()
 			setclipboard(source)
@@ -5058,5 +5062,9 @@ local function C_135()
 	end)
 end;
 task.spawn(C_135);
+btn.MouseButton1Click:Connect(function()
+	execute_script()
+end)
 load_saved_scripts()
+
 return G2L["1"], require;
