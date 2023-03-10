@@ -3309,7 +3309,7 @@ G2L_MODULES[G2L["6b"]] = {
 				textbox.Text = "\n" .. textbox.Text
 			end
 
-			textbox.Position = UDim2.new(0, -3,0,-14.2)
+			textbox.Position = UDim2.new(0, -3,0,-13.2)
 			textbox.Size = UDim2.new(1, 4,1, textbox.TextSize)
 		end
 
@@ -4946,17 +4946,12 @@ local function C_fd()
 
 	local http = game:GetService("HttpService")
 	btn.MouseButton1Click:Connect(function()
-		local scriptFrame = script.Parent.Parent.Parent.Scripts.ScriptFrame
-		for i,v in pairs(scriptFrame:GetChildren()) do
-			v:Destroy()
-	   	end)
-	   
 		local url = "https://www.scriptblox.com/api/script/search?q="..G2L["ce"].Text
 		local response = game:HttpGetAsync(url)
 		local decoded = http:JSONDecode(response)
 		for _, script in pairs(decoded.result.scripts) do
             if(script.isUniversal == true) then
-                AddTab("rbxassetid://12742166925", "??", script.title, script.script)
+                AddTab("rbxassetid://12742166887", "??", script.title, script.script)
             else
                 AddTab("https://assetgame.roblox.com/Game/Tools/ThumbnailAsset.ashx?aid="..script.game.gameId.."&fmt=png&wd=420&ht=420", "??", script.title, script.script)
             end
