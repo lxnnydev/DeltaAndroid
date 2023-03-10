@@ -4735,7 +4735,7 @@ task.spawn(C_51);
 -- StarterGui.DeltaGui.MainUi.MainFrame.Tabs.MakeScript.ScriptTextbox.AddScript.TextButton.LocalScript
 
 
-local function C_58()
+
 	local script = G2L["58"];
 	local btn = script.Parent
 
@@ -4782,8 +4782,7 @@ local function C_58()
 		script.Parent.Parent.Parent.Parent.TitleScript.MainTextBox.Text = ""
 	end)
 
-end;
-task.spawn(C_58);
+
 
 local function load_saved_scripts()
     --test
@@ -4911,7 +4910,7 @@ local function C_fd()
 		print("clicked")
 
 		execute.MouseButton1Click:Connect(function()
-			execute_script(source)()
+			execute_script(source)
 		end)
         copy.MouseButton1Click:Connect(function()
 			setclipboard(source)
@@ -4946,6 +4945,13 @@ local function C_fd()
 
 	local http = game:GetService("HttpService")
 	btn.MouseButton1Click:Connect(function()
+		for _, child in ipairs(G2L["d2"]:GetChildren()) do
+			if child:IsA("Frame") then
+			  child:Destroy()
+			end
+		  end
+
+		  
 		local url = "https://www.scriptblox.com/api/script/search?q="..G2L["ce"].Text
 		local response = game:HttpGetAsync(url)
 		local decoded = http:JSONDecode(response)
