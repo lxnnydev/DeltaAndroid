@@ -4946,7 +4946,12 @@ local function C_fd()
 		local response = game:HttpGetAsync(url)
 		local decoded = http:JSONDecode(response)
 		for _, script in pairs(decoded.result.scripts) do
-			AddTab("https://assetgame.roblox.com/Game/Tools/ThumbnailAsset.ashx?aid="..script.game.gameId.."&fmt=png&wd=420&ht=420", "??", script.title, script.script)
+            if(script.isUniversal == true) then
+                AddTab("rbxassetid://12742166925", "??", script.title, script.script)
+            else
+                AddTab("https://assetgame.roblox.com/Game/Tools/ThumbnailAsset.ashx?aid="..script.game.gameId.."&fmt=png&wd=420&ht=420", "??", script.title, script.script)
+            end
+			
 		end
 
 	end)
