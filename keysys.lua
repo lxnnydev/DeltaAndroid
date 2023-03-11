@@ -1,7 +1,6 @@
 makefolder("d_android_script_dir")
 _G.is_deltaandroid_loaded = true
 
-
 local G2L = {};
 
 -- StarterGui.DeltaKeyGui
@@ -222,29 +221,21 @@ G2L["23"]["Size"] = UDim2.new(0.11047418415546417, 0, 0.4959585964679718, 0);
 G2L["23"]["BackgroundTransparency"] = 1;
 G2L["23"]["Position"] = UDim2.new(0.6944091320037842, 0, 0.2479792982339859, 0);
 
-function write_key(file, content)
-	while(isfile(file) == false and readfile(file) != content) do
-		writefile(file, content)
-		wait(1)
-	end
-	print(readfile(file))
-end
-
 function loadmainui()
 	G2L["1"].Parent = nil
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/lxnnydev/DeltaAndroid/main/new_main_ui.lua"))()
 
 end
 
-if not isfile("delta_key") then
-    writefile("delta_key", "dontdelete")
+if not isfile("deltanadroid.key") then
+    writefile("deltanadroid.key", "dontdelete")
 end
 
 function confirmsavedkey()
-	if isfile("delta_key") then
-		local key = readfile("delta_key")
-		if string.find(game:HttpGet("https://redirect-api.work.ink/tokenValid/" .. key), "true") then
-			loadmainui()
+	if isfile("deltanadroid.key") then
+		local key = readfile("deltanadroid.key")
+		if key == tostring(os.date("*t").yday) then
+		loadmainui()
 		end
 	end
 
@@ -265,15 +256,13 @@ function confirmkey(key)
 		local response = game:HttpGet("https://testthing.lennymayer.repl.co/?key=" .. key)
 		if string.find(response, "valid") then
 			writefile("adminkey.delta", key)
-			wait(1)
 			loadmainui()
 		end
 	else
 		local url = "https://redirect-api.work.ink/tokenValid/" .. key
 		local realkey = game:HttpGet(url)
 		if string.find(realkey, "true") then
-			writefile("delta_key", key)
-			wait(1)
+			writefile("deltanadroid.key", tostring(os.date("*t").yday))
 			loadmainui()
 		end
 	end
