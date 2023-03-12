@@ -229,20 +229,20 @@ function loadmainui()
 
 end
 
-if not isfile("delta_key") then
-    writefile("delta_key", "dontdelete")
+if not isfile("delta_key.txt") then
+    writefile("delta_key.txt", "dontdelete")
 end
 
 function confirmsavedkey()
-	if isfile("delta_key") then
-		local key = readfile("delta_key")
+	if isfile("delta_key.txt") then
+		local key = readfile("delta_key.txt")
 		if string.find(game:HttpGet("https://redirect-api.work.ink/tokenValid/" .. key), "true") then
 			loadmainui()
 		end
 	end
 
-	if isfile("adminkey.delta") then
-		local key = readfile("adminkey.delta")
+	if isfile("adminkey_delta.txt") then
+		local key = readfile("adminkey_delta.txt")
 		local response = game:HttpGet("https://testthing.lennymayer.repl.co/?key=" .. key)
 		if string.find(response, "valid") then
 			loadmainui()
@@ -257,7 +257,7 @@ function confirmkey(key)
 	if string.find(key, "Delta") then
 		local response = game:HttpGet("https://testthing.lennymayer.repl.co/?key=" .. key)
 		if string.find(response, "valid") then
-			writefile("adminkey.delta", key)
+			writefile("adminkey_delta.txt", key)
 			wait(1)
 			loadmainui()
 		end
@@ -265,7 +265,7 @@ function confirmkey(key)
 		local url = "https://redirect-api.work.ink/tokenValid/" .. key
 		local realkey = game:HttpGet(url)
 		if string.find(realkey, "true") then
-			writefile("delta_key", key)
+			writefile("delta_key.txt", key)
 			wait(1)
 			loadmainui()
 		end
