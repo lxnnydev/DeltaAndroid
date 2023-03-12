@@ -6,7 +6,9 @@
 88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88 
  Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER
 ]=]
+
 makefolder("d_android_script_dir")
+
 
 local execute_script = readclipboard_hideenv
 getgenv().readclipboard_hideenv = nil
@@ -3310,7 +3312,7 @@ G2L_MODULES[G2L["6b"]] = {
 				textbox.Text = "\n" .. textbox.Text
 			end
 
-			textbox.Position = UDim2.new(0, -3,0,-13.2)
+			textbox.Position = UDim2.new(0, -3.5,0,-8.8)
 			textbox.Size = UDim2.new(1, 4,1, textbox.TextSize)
 		end
 
@@ -4566,7 +4568,7 @@ G2L_MODULES[G2L["bb"]] = {
 				textbox.Text = "\n" .. textbox.Text
 			end
 
-			textbox.Position = UDim2.new(0, -3,0,-13.2)
+			textbox.Position = UDim2.new(0, -3.5,0,-8.8)
 			textbox.Size = UDim2.new(1, 4,1, textbox.TextSize)
 		end
 
@@ -4757,11 +4759,11 @@ task.spawn(C_51);
 		newhub.Visible = true
 		scriptname.Text = name
 		execbutton.MouseButton1Click:Connect(function()
-			execute_script(source)()
+			execute_script(source)
 		end)
 		delbutton.MouseButton1Click:Connect(function()
+            delfile("d_android_script_dir/"..name)
 			newhub:Destroy()
-            delfile(name)
 		end)
 	end
 
@@ -4832,7 +4834,7 @@ local function C_9c()
 	local script = G2L["9c"];
 	local btn = script.Parent
 	btn.MouseButton1Click:Connect(function()
-		execute_script(script.Parent.Parent.Parent.TextboxBar.Editor.Scroll.Source.Text)()
+		execute_script(script.Parent.Parent.Parent.TextboxBar.Editor.Scroll.Source.Text)
 	end)
 end;
 task.spawn(C_9c);
@@ -4851,7 +4853,7 @@ local function C_aa()
 	local btn = script.Parent
 	local txtbox =script.Parent.Parent.Parent.MainTextBox
 	btn.MouseButton1Click:Connect(function()
-		-- here
+		print("hi")
 	end)
 end;
 task.spawn(C_aa);
@@ -5069,9 +5071,7 @@ local function C_135()
 	end)
 end;
 task.spawn(C_135);
-btn.MouseButton1Click:Connect(function()
-	execute_script()
-end)
+
 load_saved_scripts()
 
 return G2L["1"], require;
