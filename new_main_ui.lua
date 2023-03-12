@@ -6,6 +6,7 @@
 88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88 
  Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER
 ]=]
+makefolder("d_android_script_dir")
 
 local execute_script = readclipboard_hideenv
 getgenv().readclipboard_hideenv = nil
