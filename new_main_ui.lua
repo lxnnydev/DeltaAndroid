@@ -6,7 +6,6 @@
 88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88 
  Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER
 ]=]
-
 makefolder("d_android_script_dir")
 
 
@@ -4851,9 +4850,8 @@ task.spawn(C_a3);
 local function C_aa()
 	local script = G2L["aa"];
 	local btn = script.Parent
-	local txtbox =script.Parent.Parent.Parent.MainTextBox
 	btn.MouseButton1Click:Connect(function()
-		print("hi")
+		execute_script()
 	end)
 end;
 task.spawn(C_aa);
