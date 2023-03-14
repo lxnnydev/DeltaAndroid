@@ -258,12 +258,8 @@ function confirmkey(key)
 			loadmainui()
 		end
 	else
-		local url = "https://redirect-api.work.ink/tokenValid/" .. key
-		local realkey = game:HttpGet(url)
-		if string.find(realkey, "true") then
 			writefile("dsigfiureikuger.txt", key)
 			loadmainui()
-		end
 	end
 
 end
