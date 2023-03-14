@@ -236,16 +236,22 @@ end
 function confirmsavedkey()
 	if string.find(game:HttpGet("https://redirect-api.work.ink/ipTokenValid"), "true") then
 		loadmainui()
-	end
-
-	if isfile("adminkey_delta.txt") then
+	elseif isfile("adminkey_delta.txt") then
 		local key = readfile("adminkey_delta.txt")
 		local response = game:HttpGet("https://testthing.lennymayer.repl.co/?key=" .. key)
 		if string.find(response, "valid") then
 			loadmainui()
 		end
+	elseif isfile("dsigfiureikuger.txt") then
+		local key = readfile("dsigfiureikuger.txt")
+		local response = game:HttpGet("https://redirect-api.work.ink/tokenValid/" .. key)
+		if string.find(response, "true") then
+			loadmainui()
+		end
 	end
 end
+	
+
 
 confirmsavedkey()
 
