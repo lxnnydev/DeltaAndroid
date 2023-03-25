@@ -4759,6 +4759,12 @@ task.spawn(C_51);
 		scriptname.Text = name
 		execbutton.MouseButton1Click:Connect(function()
 			execute_script(source)
+			game.StarterGui:SetCore("SendNotification", 
+            {
+            Title = "Delta Android";
+            Text = "Successfully executed the script!";
+            Duration = 1;
+            })
 		end)
 		delbutton.MouseButton1Click:Connect(function()
             delfile("d_android_script_dir/"..name)
@@ -4834,6 +4840,12 @@ local function C_9c()
 	local btn = script.Parent
 	btn.MouseButton1Click:Connect(function()
 		execute_script(script.Parent.Parent.Parent.TextboxBar.Editor.Scroll.Source.Text)
+		game.StarterGui:SetCore("SendNotification", 
+            {
+            Title = "Delta Android";
+            Text = "Successfully executed the script!";
+            Duration = 1;
+            })
 	end)
 end;
 task.spawn(C_9c);
@@ -4852,6 +4864,12 @@ local function C_aa()
 	local btn = script.Parent
 	btn.MouseButton1Click:Connect(function()
 		execute_script()
+		game.StarterGui:SetCore("SendNotification", 
+            {
+            Title = "Delta Android";
+            Text = "Successfully executed from clipboard!";
+            Duration = 1;
+            })
 	end)
 end;
 task.spawn(C_aa);
@@ -4912,6 +4930,12 @@ local function C_fd()
 
 		execute.MouseButton1Click:Connect(function()
 			execute_script(source)
+			game.StarterGui:SetCore("SendNotification", 
+            {
+            Title = "Delta Android";
+            Text = "Successfully executed the script!";
+            Duration = 1;
+            })
 		end)
         copy.MouseButton1Click:Connect(function()
 			setclipboard(source)
