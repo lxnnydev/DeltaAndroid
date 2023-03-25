@@ -4977,7 +4977,7 @@ local function C_fd()
 		  end
 
 		  
-		local url = "https://www.scriptblox.com/api/script/search?q="..G2L["ce"].Text
+		local url = "https://scriptblox.com/api/script/search?filters=free&q="..G2L["ce"].Text
 		local response = game:HttpGetAsync(url)
 		local decoded = http:JSONDecode(response)
 		for _, script in pairs(decoded.result.scripts) do
