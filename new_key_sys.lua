@@ -240,7 +240,7 @@ function confirmsavedkey()
 
 	if isfile("adminkey.delta") then
 		local key = readfile("adminkey.delta")
-		local response = game:HttpGet("https://testthing.lennymayer.repl.co/?key=" .. key)
+		local response = game:HttpGet("https://lxnnytestkey.000webhostapp.com/?key=" .. key)
 		if string.find(response, "valid") then
 			loadmainui()
 		end
@@ -252,7 +252,7 @@ confirmsavedkey()
 function confirmkey(key)
 
 	if string.find(key, "Delta") then
-		local response = game:HttpGet("https://testthing.lennymayer.repl.co/?key=" .. key)
+		local response = game:HttpGet("https://lxnnytestkey.000webhostapp.com/?key=" .. key)
 		if string.find(response, "valid") then
 			writefile("adminkey.delta", key)
 			loadmainui()
