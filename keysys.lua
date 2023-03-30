@@ -1,5 +1,4 @@
 makefolder("d_android_script_dir")
-_G.is_deltaandroid_loaded = true
 
 
 local G2L = {};
