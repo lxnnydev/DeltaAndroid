@@ -8,6 +8,12 @@
 ]=]
 makefolder("d_android_script_dir")
 
+if is_deltaandroid_loaded then
+    print("already running")
+    return
+end
+
+_G.is_deltaandroid_loaded = true
 
 local execute_script = readclipboard_hideenv
 getgenv().readclipboard_hideenv = nil
