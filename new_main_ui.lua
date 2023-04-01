@@ -8,7 +8,7 @@
 ]=]
 makefolder("d_android_script_dir")
 
-if is_deltaandroid_loaded then
+if _G.is_deltaandroid_loaded then
     print("already running")
     return
 end
@@ -4779,8 +4779,6 @@ task.spawn(C_51);
 	end
 
     for _, file in ipairs(listfiles("d_android_script_dir")) do
-        print(file)
-        print(readfile(file))
         AddScript(file:sub(22, #file), readfile(file), true)
     end
 
@@ -4932,7 +4930,6 @@ local function C_fd()
 		credit.Text = "Uploaded by: "..creator
 		scname.Text = scriptname
 
-		print("clicked")
 
 		execute.MouseButton1Click:Connect(function()
 			execute_script(source)
