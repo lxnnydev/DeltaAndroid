@@ -5098,5 +5098,78 @@ end;
 task.spawn(C_135);
 
 load_saved_scripts()
+if isfile("theme.delta") then
+    local HttpService = game:GetService("HttpService")
+local json = readfile("theme.delta")
+local data = HttpService:JSONDecode(json)
+
+
+local BgColor = Color3.fromHex(data.BgColor)
+local BtnColor = Color3.fromHex(data.BtnColor)
+local MenuColor = Color3.fromHex(data.MenuColor)
+local SettingBtnColor = Color3.fromHex(data.SettingInputColor)
+
+
+local gui = game.CoreGui.DeltaGui
+local BG = gui.MainUi.MainFrame
+
+BG.BackgroundColor3 = BgColor
+gui.FloatingIcon.BackgroundColor3 = BgColor
+
+-- Menus
+    -- Script List
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.MakeScript.TitleScript.BackgroundColor3 = MenuColor
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.MakeScript.ScriptTextbox.BackgroundColor3 = MenuColor
+    --Executor Home
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Home.ScriptTextbox.BackgroundColor3 = MenuColor
+	--Script Search
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Scripts.TitleScript.BackgroundColor3 = MenuColor
+	--Settings
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.WalkSpeed.BackgroundColor3 = MenuColor
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.JumpPower.BackgroundColor3 = MenuColor
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.Gravity.BackgroundColor3 = MenuColor
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.Credits.BackgroundColor3 = MenuColor
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.InviteLink.BackgroundColor3 = MenuColor
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.UnlockFPS.BackgroundColor3 = MenuColor
+
+task.spawn(function()
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Scripts.Scripts.Folder.LIST.BackgroundColor3 = MenuColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.MakeScript.Scripts.LIST.TitleScript.BackgroundColor3 = MenuColor
+	for _, script in pairs(game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.MakeScript.Scripts.ScriptFrame:GetChildren()) do
+		if script.Name == "LIST" then
+			script.TitleScript.BackgroundColor3 = MenuColor
+		end
+	end
+	for _, script in pairs(game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Scripts.Scripts.ScriptFrame:GetChildren()) do
+		if script:IsA("Frame") then
+			script.BackgroundColor3 = MenuColor
+		end
+	end
+end)
+
+
+-- Buttons
+task.spawn(function()
+	for _, inside in pairs(game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs:GetDescendants()) do
+		if inside:IsA("Frame") and inside:FindFirstChild("ImageLabel") and inside:FindFirstChild("TextButton") then
+			inside.BackgroundColor3 = BtnColor
+			inside.ImageLabel.BackgroundColor3 = BtnColor
+			inside.TextButton.BackgroundColor3 = BtnColor
+			
+		end
+	end
+	
+	-- Setting btns
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.Gravity.Reset.BackgroundColor3 = SettingBtnColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.Gravity.Set.BackgroundColor3 = SettingBtnColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.Gravity.TextBox.BackgroundColor3 = SettingBtnColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.JumpPower.Set.BackgroundColor3 = SettingBtnColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.JumpPower.TextBox.BackgroundColor3 = SettingBtnColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.WalkSpeed.Set.BackgroundColor3 = SettingBtnColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.WalkSpeed.TextBox.BackgroundColor3 = SettingBtnColor
+	
+end)
+end
+
 
 return G2L["1"], require;
