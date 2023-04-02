@@ -657,7 +657,7 @@ G2L["6b"] = Instance.new("ModuleScript", G2L["60"]);
 G2L["6b"]["Name"] = [[TextFixer]];
 
 -- StarterGui.DeltaGui.MainUi.MainFrame.Tabs.MakeScript.ScriptTextbox.TextboxBar.LocalScript.ScriptEditor.Editor
-G2L["6c"] = Instance.new("Frame", G2L["60"]);
+G2L["6c"] = Instance.new("ImageLabel", G2L["60"]);
 G2L["6c"]["BorderSizePixel"] = 0;
 G2L["6c"]["BackgroundColor3"] = Color3.fromRGB(35, 41, 35);
 G2L["6c"]["BackgroundTransparency"] = 1;
@@ -1198,7 +1198,7 @@ G2L["bb"] = Instance.new("ModuleScript", G2L["b0"]);
 G2L["bb"]["Name"] = [[TextFixer]];
 
 -- StarterGui.DeltaGui.MainUi.MainFrame.Tabs.Home.ScriptTextbox.TextboxBar.LocalScript.ScriptEditor.Editor
-G2L["bc"] = Instance.new("Frame", G2L["b0"]);
+G2L["bc"] = Instance.new("ImageLabel", G2L["b0"]);
 G2L["bc"]["BorderSizePixel"] = 0;
 G2L["bc"]["BackgroundColor3"] = Color3.fromRGB(35, 41, 35);
 G2L["bc"]["BackgroundTransparency"] = 1;
@@ -5169,7 +5169,23 @@ task.spawn(function()
 	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.WalkSpeed.TextBox.BackgroundColor3 = SettingBtnColor
 	
 end)
+
+if(data.editor_image ~= "") then
+local ImageFile = "delta_theme_image"
+local ImageTransparency = data.image_opacity
+
+
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Home.ScriptTextbox.TextboxBar.Editor.Image = getcustomasset(ImageFile)
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.MakeScript.ScriptTextbox.TextboxBar.Editor.Image = getcustomasset(ImageFile)
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Home.ScriptTextbox.TextboxBar.Editor.ImageTransparency = ImageTransparency
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.MakeScript.ScriptTextbox.TextboxBar.Editor.ImageTransparency = ImageTransparency
+
+
+
 end
+
+end
+
 
 
 return G2L["1"], require;
