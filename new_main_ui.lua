@@ -15,6 +15,8 @@ end
 
 _G.is_deltaandroid_loaded = true
 
+runautoexec_hideenv()
+
 local execute_script = readclipboard_hideenv
 getgenv().readclipboard_hideenv = nil
 
