@@ -315,4 +315,16 @@ local script = G2L["20"];
 end;
 task.spawn(C_20);
 
+local player = game.Players.LocalPlayer
+
+player.Chatted:Connect(function(message)
+    if message == "/hd" then
+        game.CoreGui.DeltaGui.Enabled = false
+    end
+    
+    if message == "/sd" then
+        game.CoreGui.DeltaGui.Enabled = true
+    end
+end)
+
 return G2L["1"], require;
