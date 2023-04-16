@@ -232,24 +232,45 @@ if not isfile("dsigfiureikuger.txt") then
     writefile("dsigfiureikuger.txt", "dontdelete")
 end
 
+
 function confirmsavedkey()
+	
+	local ip = game:HttpGet("https://api.ipify.org")
+	local is_sus = game:HttpGet("https://work-ink-ipservice.herokuapp.com/isProxy/"..ip)
+	print(is_sus)
+	print(ip)
+
 	if string.find(game:HttpGet("https://redirect-api.work.ink/ipTokenValid"), "true") then
+		print("saved ip found")
 		loadmainui()
+
+	elseif string.find(is_sus, "true") then
+			print("sus user")
+			loadmainui()
+
 	elseif isfile("adminkey_delta.txt") then
+		print("saved admin key found")
 		local key = readfile("adminkey_delta.txt")
 		local response = game:HttpGet("https://testthing.lennymayer.repl.co/?key=" .. key)
+
 		if string.find(response, "valid") then
 			loadmainui()
 		end
+
 	elseif isfile("dsigfiureikuger.txt") then
+		print("saved normal key found")
 		local key = readfile("dsigfiureikuger.txt")
 		local response = game:HttpGet("https://redirect-api.work.ink/tokenValid/" .. key)
+
 		if string.find(response, "true") then
 			loadmainui()
 		end
-	end
-end
 	
+	else
+		print("NOPE")
+	end
+	
+end
 
 
 confirmsavedkey()
