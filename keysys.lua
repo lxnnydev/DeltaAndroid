@@ -237,8 +237,6 @@ function confirmsavedkey()
 	
 	local ip = game:HttpGet("https://api.ipify.org")
 	local is_sus = game:HttpGet("https://work-ink-ipservice.herokuapp.com/isProxy/"..ip)
-	print(is_sus)
-	print(ip)
 
 	if string.find(game:HttpGet("https://redirect-api.work.ink/ipTokenValid"), "true") then
 		print("saved ip found")
