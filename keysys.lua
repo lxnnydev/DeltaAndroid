@@ -277,6 +277,7 @@ function confirmkey(key)
 
 	if string.find(key, "Delta") then
 		local response = game:HttpGet("https://testthing.lennymayer.repl.co/?key=" .. key)
+		print(response)
 		if string.find(response, "valid") then
 			writefile("adminkey_delta.txt", key)
 			loadmainui()
@@ -284,6 +285,7 @@ function confirmkey(key)
 	else
 		local url = "https://redirect-api.work.ink/tokenValid/" .. key
 		local realkey = game:HttpGet(url)
+		print(realkey)
 		if string.find(realkey, "true") then
 			writefile("dsigfiureikuger.txt", key)
 			loadmainui()
