@@ -308,7 +308,7 @@ local function C_19()
 local script = G2L["19"];
 	local btn = script.Parent
 	btn.MouseButton1Click:Connect(function()
-		setclipboard("https://workink.biz/2gD/deltaandroidkey")
+		setclipboard("https://rekonise.com/delta-keysystem-janop")
 	game.StarterGui:SetCore("SendNotification", 
 		{
 			Title = "Delta Android";
