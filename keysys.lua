@@ -306,7 +306,7 @@ end
 
 	local btn = G2L["17"]
 	btn.MouseButton1Click:Connect(function()
-		setclipboard("https://workink.biz/2gD/deltaandroidkey")
+		setclipboard("https://work.ink/2gD/deltaandroidkey")
 	game.StarterGui:SetCore("SendNotification", 
 		{
 			Title = "Delta Android";
