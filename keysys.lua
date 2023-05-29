@@ -271,8 +271,6 @@ function confirmsavedkey()
 end
 
 
-confirmsavedkey()
-
 function confirmkey(key)
 
 	if string.find(key, "Delta") then
@@ -330,7 +328,7 @@ end
 		})
 	end)
 
-
+confirmsavedkey()
 local player = game.Players.LocalPlayer
 
 player.Chatted:Connect(function(message)
