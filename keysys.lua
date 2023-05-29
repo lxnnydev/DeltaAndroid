@@ -235,16 +235,11 @@ end
 
 function confirmsavedkey()
 	
-	local ip = game:HttpGet("https://api.ipify.org")
-	local is_sus = game:HttpGet("https://work-ink-ipservice.herokuapp.com/isProxy/"..ip)
+	
 
 	if string.find(game:HttpGet("https://redirect-api.work.ink/ipTokenValid"), "true") then
-		print("saved ip found")
+		print("saved network key found")
 		loadmainui()
-
-	elseif string.find(is_sus, "true") then
-			print("sus user")
-			loadmainui()
 
 	elseif isfile("adminkey_delta.txt") then
 		print("saved admin key found")
@@ -255,17 +250,21 @@ function confirmsavedkey()
 			loadmainui()
 		end
 
-	elseif isfile("dsigfiureikuger.txt") then
+	elseif isfile("dsigfiureikuger.txt") and string.find(game:HttpGet("https://redirect-api.work.ink/tokenValid/" .. readfile("dsigfiureikuger.txt")), "true") then
 		print("saved normal key found")
-		local key = readfile("dsigfiureikuger.txt")
-		local response = game:HttpGet("https://redirect-api.work.ink/tokenValid/" .. key)
 
 		if string.find(response, "true") then
 			loadmainui()
 		end
 	
 	else
-		print("NOPE")
+		local ip = game:HttpGet("https://api.ipify.org")
+	    local is_sus = game:HttpGetAsync("https://work-ink-ipservice.herokuapp.com/isProxy/"..ip)
+        print(is_sus)
+        if string.find(is_sus, "true") then
+			print("sus user")
+			loadmainui()
+        end
 	end
 	
 end
@@ -296,19 +295,16 @@ end
 
 
 -- StarterGui.DeltaKeyGui.KeySystem.MainKeyFrame.Continue.TextButton.LocalScript
-local function C_12()
-local script = G2L["12"];
-	local btn = script.Parent
-	local key = script.Parent.Parent.Parent.SideTextbox.MainTextBox
+
+	local btn = G2L["10"]
+	local key = G2L["a"]
 	btn.MouseButton1Click:Connect(function()
 		confirmkey(key.Text)
 	end)
-end;
-task.spawn(C_12);
 -- StarterGui.DeltaKeyGui.KeySystem.MainKeyFrame.GetKey.TextButton.LocalScript
-local function C_19()
-local script = G2L["19"];
-	local btn = script.Parent
+
+
+	local btn = G2L["17"]
 	btn.MouseButton1Click:Connect(function()
 		setclipboard("https://workink.biz/2gD/deltaandroidkey")
 	game.StarterGui:SetCore("SendNotification", 
@@ -318,12 +314,11 @@ local script = G2L["19"];
 			Duration = 4;
 		})
 	end)
-end;
-task.spawn(C_19);
+
+
 -- StarterGui.DeltaKeyGui.KeySystem.MainKeyFrame.JoinServer.TextButton.LocalScript
-local function C_20()
-local script = G2L["20"];
-	local btn = script.Parent
+
+	local btn = G2L["1e"]
 	btn.MouseButton1Click:Connect(function()
 		setclipboard("discord.gg/deltaex")
 	game.StarterGui:SetCore("SendNotification", 
@@ -333,8 +328,7 @@ local script = G2L["20"];
 			Duration = 4;
 		})
 	end)
-end;
-task.spawn(C_20);
+
 
 local player = game.Players.LocalPlayer
 
@@ -349,5 +343,4 @@ player.Chatted:Connect(function(message)
 end)
 
 return G2L["1"], require;
-
 
