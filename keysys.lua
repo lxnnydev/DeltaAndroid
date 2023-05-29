@@ -1,4 +1,5 @@
-makefolder("d_android_script_dir")
+local success, result = pcall(function()
+    makefolder("d_android_script_dir")
 
 
 local G2L = {};
@@ -344,3 +345,8 @@ end)
 
 return G2L["1"], require;
 
+end)
+
+if not success then
+    print("An error occurred:", result)
+end
