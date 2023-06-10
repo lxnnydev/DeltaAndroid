@@ -18,7 +18,11 @@ _G.is_deltaandroid_loaded = true
 runautoexec_hideenv()
 
 local execute_script = readclipboard_hideenv
-getgenv().readclipboard_hideenv = nil
+
+getgenv().version_x_beta = function()
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/24afeb5cda142560e2e6cf3a727f6c5c/raw/08931359a9934cc68dd932f5e6f9993a866ce63f/version_x_beta.lua",true))()
+end
+
 
 
 -- Instances: 310 | Scripts: 28 | Modules: 24
