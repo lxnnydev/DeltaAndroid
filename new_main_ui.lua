@@ -20,8 +20,12 @@ runautoexec_hideenv()
 local execute_script = readclipboard_hideenv
 
 getgenv().version_x_beta = function()
-    writefile("is_versx_beta", "true")
-    loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/24afeb5cda142560e2e6cf3a727f6c5c/raw/08931359a9934cc68dd932f5e6f9993a866ce63f/version_x_beta.lua",true))()
+	if(not isfile("is_versx_beta")) then
+		writefile("is_versx_beta", "true")
+		wait()
+		game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+	end
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/24afeb5cda142560e2e6cf3a727f6c5c/raw/7d99ea12eeaaa822b5a8ed80048dda85a09dc789/version_x_beta.lua",true))()
 end
 
 if(isfile("is_versx_beta")) then
