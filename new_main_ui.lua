@@ -20,7 +20,7 @@ runautoexec_hideenv()
 local execute_script = readclipboard_hideenv
 
 getgenv().version_x_beta = function()
-    loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/24afeb5cda142560e2e6cf3a727f6c5c/raw/08931359a9934cc68dd932f5e6f9993a866ce63f/version_x_beta.lua",true))()
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/24afeb5cda142560e2e6cf3a727f6c5c/raw/4ec8dfc32a0ce530f28a09114c41f15b00b1596a/version_x_beta.lua",true))()
 end
 
 
