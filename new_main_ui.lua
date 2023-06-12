@@ -23,13 +23,15 @@ getgenv().version_x_beta = function()
 	if(not isfile("is_versx_beta")) then
 		writefile("is_versx_beta", "true")
 		wait()
+		game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
 	end
-    loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/24afeb5cda142560e2e6cf3a727f6c5c/raw/7d99ea12eeaaa822b5a8ed80048dda85a09dc789/version_x_beta.lua",true))()
-    return
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/24afeb5cda142560e2e6cf3a727f6c5c/raw/c176e1d242d4dc78a98df8c3be96bbf1f96590e2/version_x_beta.lua",true))()
+	return
 end
 
 if(isfile("is_versx_beta")) then
     version_x_beta()
+	return
 end
 
 -- Instances: 310 | Scripts: 28 | Modules: 24
