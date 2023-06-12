@@ -25,7 +25,7 @@ getgenv().version_x_beta = function()
 		wait()
 		game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
 	end
-    loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/24afeb5cda142560e2e6cf3a727f6c5c/raw/c176e1d242d4dc78a98df8c3be96bbf1f96590e2/version_x_beta.lua",true))()
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/24afeb5cda142560e2e6cf3a727f6c5c/raw/5b50696444a082a2f60c91f9285f613b375efe28/version_x_beta.lua",true))()
 	return
 end
 
