@@ -21,7 +21,7 @@ local execute_script = runcode
 
 getgenv().version_x_beta = function()
 	
-    loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/c8fa10de6c6e62129e4be1921dbf6693/raw/a19420cfc4c2efda4cc9704dde72694658a11615/vers_x_new_beta.lua",true))()
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/c8fa10de6c6e62129e4be1921dbf6693/raw/bb388234ca32eaf74061f273de3d06eaccb3a3f0/vers_x_new_beta.lua",true))()
 	return
 end
 
