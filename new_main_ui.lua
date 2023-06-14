@@ -15,9 +15,9 @@ end
 
 _G.is_deltaandroid_loaded = true
 
-runautoexec_hideenv()
+runautoexec()
 
-local execute_script = readclipboard_hideenv
+local execute_script = runcode
 
 getgenv().version_x_beta = function()
 	if(not isfile("is_versx_beta")) then
@@ -4882,7 +4882,7 @@ local function C_aa()
 	local script = G2L["aa"];
 	local btn = script.Parent
 	btn.MouseButton1Click:Connect(function()
-		execute_script()
+		execute_script(getclipboard())
 		game.StarterGui:SetCore("SendNotification", 
             {
             Title = "Delta Android";
