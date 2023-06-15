@@ -19,11 +19,13 @@ runautoexec()
 
 local execute_script = runcode
 
-getgenv().version_x_beta = function()
-	
-    loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/c8fa10de6c6e62129e4be1921dbf6693/raw/bb388234ca32eaf74061f273de3d06eaccb3a3f0/vers_x_new_beta.lua",true))()
-	return
-end
+genv = clonefunction(getgenv)()
+_newcclosure = clonefunction(newcclosure)
+
+genv.version_x_beta = _newcclosure(function()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/c8fa10de6c6e62129e4be1921dbf6693/raw/a19420cfc4c2efda4cc9704dde72694658a11615/vers_x_new_beta.lua", true))()
+return
+end)
 
 if(isfile("is_versx_beta")) then
     version_x_beta()
@@ -3231,20 +3233,6 @@ G2L_MODULES[G2L["69"]] = {
 		end
 
 		function module.Search(self)
-			local currentWord = self:GetCurrentWord():lower()
-
-			if currentWord == "" and #currentWord <= 1 then
-				return nil
-			end
-
-			for word, wordType in pairs(words) do
-				local matched = string.match(word:lower(), currentWord)
-
-				if matched then
-					local foundStart, foundEnd = string.find(word:lower(), currentWord)
-					return word, (foundEnd - foundStart) + 1
-				end
-			end
 
 			return nil
 		end
@@ -3255,7 +3243,7 @@ G2L_MODULES[G2L["69"]] = {
 			self.SuggestionButton = self.Textbox.Suggestion
 
 			self.Textbox:GetPropertyChangedSignal("Text"):Connect(function()
-				local foundWord, matchedLength = self:Search()
+				local foundWord, matchedLength = nil
 
 				if foundWord then
 					local position = UDim2.new(0, 0,0, getLine:GetCurrentLine(self.Textbox) * self.Textbox.TextSize)
@@ -4487,20 +4475,6 @@ G2L_MODULES[G2L["b9"]] = {
 		end
 
 		function module.Search(self)
-			local currentWord = self:GetCurrentWord():lower()
-
-			if currentWord == "" and #currentWord <= 1 then
-				return nil
-			end
-
-			for word, wordType in pairs(words) do
-				local matched = string.match(word:lower(), currentWord)
-
-				if matched then
-					local foundStart, foundEnd = string.find(word:lower(), currentWord)
-					return word, (foundEnd - foundStart) + 1
-				end
-			end
 
 			return nil
 		end
@@ -4511,7 +4485,7 @@ G2L_MODULES[G2L["b9"]] = {
 			self.SuggestionButton = self.Textbox.Suggestion
 
 			self.Textbox:GetPropertyChangedSignal("Text"):Connect(function()
-				local foundWord, matchedLength = self:Search()
+				local foundWord, matchedLength = nil
 
 				if foundWord then
 					local position = UDim2.new(0, 0,0, getLine:GetCurrentLine(self.Textbox) * self.Textbox.TextSize)
