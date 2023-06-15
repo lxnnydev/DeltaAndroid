@@ -17,7 +17,7 @@ _G.is_deltaandroid_loaded = true
 
 runautoexec()
 
-local execute_script = runcode
+local execute_script = clonefunction(runcode);
 
 genv = clonefunction(getgenv)()
 _newcclosure = clonefunction(newcclosure)
