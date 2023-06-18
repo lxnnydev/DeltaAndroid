@@ -6,10 +6,32 @@
 88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88 
  Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER
 ]=]
+makefolder("d_android_script_dir")
 
-local execute_script = readclipboard_hideenv
-getgenv().readclipboard_hideenv = nil
+if _G.is_deltaandroid_loaded then
+    print("already running")
+    return
+end
 
+_G.is_deltaandroid_loaded = true
+
+runautoexec()
+
+local function execute_script(sc) runcode(sc)() end
+
+
+genv = clonefunction(getgenv)()
+_newcclosure = clonefunction(newcclosure)
+
+genv.version_x_beta = _newcclosure(function()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/c8fa10de6c6e62129e4be1921dbf6693/raw/a19420cfc4c2efda4cc9704dde72694658a11615/vers_x_new_beta.lua", true))()
+return
+end)
+
+if(isfile("is_versx_beta")) then
+    version_x_beta()
+	return
+end
 
 -- Instances: 310 | Scripts: 28 | Modules: 24
 local G2L = {};
@@ -649,7 +671,7 @@ G2L["6b"] = Instance.new("ModuleScript", G2L["60"]);
 G2L["6b"]["Name"] = [[TextFixer]];
 
 -- StarterGui.DeltaGui.MainUi.MainFrame.Tabs.MakeScript.ScriptTextbox.TextboxBar.LocalScript.ScriptEditor.Editor
-G2L["6c"] = Instance.new("Frame", G2L["60"]);
+G2L["6c"] = Instance.new("ImageLabel", G2L["60"]);
 G2L["6c"]["BorderSizePixel"] = 0;
 G2L["6c"]["BackgroundColor3"] = Color3.fromRGB(35, 41, 35);
 G2L["6c"]["BackgroundTransparency"] = 1;
@@ -1190,7 +1212,7 @@ G2L["bb"] = Instance.new("ModuleScript", G2L["b0"]);
 G2L["bb"]["Name"] = [[TextFixer]];
 
 -- StarterGui.DeltaGui.MainUi.MainFrame.Tabs.Home.ScriptTextbox.TextboxBar.LocalScript.ScriptEditor.Editor
-G2L["bc"] = Instance.new("Frame", G2L["b0"]);
+G2L["bc"] = Instance.new("ImageLabel", G2L["b0"]);
 G2L["bc"]["BorderSizePixel"] = 0;
 G2L["bc"]["BackgroundColor3"] = Color3.fromRGB(35, 41, 35);
 G2L["bc"]["BackgroundTransparency"] = 1;
@@ -3212,20 +3234,6 @@ G2L_MODULES[G2L["69"]] = {
 		end
 
 		function module.Search(self)
-			local currentWord = self:GetCurrentWord():lower()
-
-			if currentWord == "" and #currentWord <= 1 then
-				return nil
-			end
-
-			for word, wordType in pairs(words) do
-				local matched = string.match(word:lower(), currentWord)
-
-				if matched then
-					local foundStart, foundEnd = string.find(word:lower(), currentWord)
-					return word, (foundEnd - foundStart) + 1
-				end
-			end
 
 			return nil
 		end
@@ -3236,7 +3244,7 @@ G2L_MODULES[G2L["69"]] = {
 			self.SuggestionButton = self.Textbox.Suggestion
 
 			self.Textbox:GetPropertyChangedSignal("Text"):Connect(function()
-				local foundWord, matchedLength = self:Search()
+				local foundWord, matchedLength = nil
 
 				if foundWord then
 					local position = UDim2.new(0, 0,0, getLine:GetCurrentLine(self.Textbox) * self.Textbox.TextSize)
@@ -3309,7 +3317,7 @@ G2L_MODULES[G2L["6b"]] = {
 				textbox.Text = "\n" .. textbox.Text
 			end
 
-			textbox.Position = UDim2.new(0, -3,0,-14.2)
+			textbox.Position = UDim2.new(0, -3.5,0,-8.8)
 			textbox.Size = UDim2.new(1, 4,1, textbox.TextSize)
 		end
 
@@ -4468,20 +4476,6 @@ G2L_MODULES[G2L["b9"]] = {
 		end
 
 		function module.Search(self)
-			local currentWord = self:GetCurrentWord():lower()
-
-			if currentWord == "" and #currentWord <= 1 then
-				return nil
-			end
-
-			for word, wordType in pairs(words) do
-				local matched = string.match(word:lower(), currentWord)
-
-				if matched then
-					local foundStart, foundEnd = string.find(word:lower(), currentWord)
-					return word, (foundEnd - foundStart) + 1
-				end
-			end
 
 			return nil
 		end
@@ -4492,7 +4486,7 @@ G2L_MODULES[G2L["b9"]] = {
 			self.SuggestionButton = self.Textbox.Suggestion
 
 			self.Textbox:GetPropertyChangedSignal("Text"):Connect(function()
-				local foundWord, matchedLength = self:Search()
+				local foundWord, matchedLength = nil
 
 				if foundWord then
 					local position = UDim2.new(0, 0,0, getLine:GetCurrentLine(self.Textbox) * self.Textbox.TextSize)
@@ -4565,7 +4559,7 @@ G2L_MODULES[G2L["bb"]] = {
 				textbox.Text = "\n" .. textbox.Text
 			end
 
-			textbox.Position = UDim2.new(0, -3,0,-13.2)
+			textbox.Position = UDim2.new(0, -3.5,0,-8.8)
 			textbox.Size = UDim2.new(1, 4,1, textbox.TextSize)
 		end
 
@@ -4735,7 +4729,7 @@ task.spawn(C_51);
 -- StarterGui.DeltaGui.MainUi.MainFrame.Tabs.MakeScript.ScriptTextbox.AddScript.TextButton.LocalScript
 
 
-local function C_58()
+
 	local script = G2L["58"];
 	local btn = script.Parent
 
@@ -4756,17 +4750,21 @@ local function C_58()
 		newhub.Visible = true
 		scriptname.Text = name
 		execbutton.MouseButton1Click:Connect(function()
-			execute_script(source)()
+			execute_script(source)
+			game.StarterGui:SetCore("SendNotification", 
+            {
+            Title = "Delta Android";
+            Text = "Successfully executed the script!";
+            Duration = 1;
+            })
 		end)
 		delbutton.MouseButton1Click:Connect(function()
+            delfile("d_android_script_dir/"..name)
 			newhub:Destroy()
-            delfile(name)
 		end)
 	end
 
     for _, file in ipairs(listfiles("d_android_script_dir")) do
-        print(file)
-        print(readfile(file))
         AddScript(file:sub(22, #file), readfile(file), true)
     end
 
@@ -4782,8 +4780,7 @@ local function C_58()
 		script.Parent.Parent.Parent.Parent.TitleScript.MainTextBox.Text = ""
 	end)
 
-end;
-task.spawn(C_58);
+
 
 local function load_saved_scripts()
     --test
@@ -4832,7 +4829,13 @@ local function C_9c()
 	local script = G2L["9c"];
 	local btn = script.Parent
 	btn.MouseButton1Click:Connect(function()
-		execute_script(script.Parent.Parent.Parent.TextboxBar.Editor.Scroll.Source.Text)()
+		execute_script(script.Parent.Parent.Parent.TextboxBar.Editor.Scroll.Source.Text)
+		game.StarterGui:SetCore("SendNotification", 
+            {
+            Title = "Delta Android";
+            Text = "Successfully executed the script!";
+            Duration = 1;
+            })
 	end)
 end;
 task.spawn(C_9c);
@@ -4849,9 +4852,14 @@ task.spawn(C_a3);
 local function C_aa()
 	local script = G2L["aa"];
 	local btn = script.Parent
-	local txtbox =script.Parent.Parent.Parent.MainTextBox
 	btn.MouseButton1Click:Connect(function()
-		-- here
+		execute_script(getclipboard())
+		game.StarterGui:SetCore("SendNotification", 
+            {
+            Title = "Delta Android";
+            Text = "Successfully executed from clipboard!";
+            Duration = 1;
+            })
 	end)
 end;
 task.spawn(C_aa);
@@ -4908,10 +4916,15 @@ local function C_fd()
 		credit.Text = "Uploaded by: "..creator
 		scname.Text = scriptname
 
-		print("clicked")
 
 		execute.MouseButton1Click:Connect(function()
-			execute_script(source)()
+			execute_script(source)
+			game.StarterGui:SetCore("SendNotification", 
+            {
+            Title = "Delta Android";
+            Text = "Successfully executed the script!";
+            Duration = 1;
+            })
 		end)
         copy.MouseButton1Click:Connect(function()
 			setclipboard(source)
@@ -4946,12 +4959,19 @@ local function C_fd()
 
 	local http = game:GetService("HttpService")
 	btn.MouseButton1Click:Connect(function()
-		local url = "https://www.scriptblox.com/api/script/search?q="..G2L["ce"].Text
+		for _, child in ipairs(G2L["d2"]:GetChildren()) do
+			if child:IsA("Frame") then
+			  child:Destroy()
+			end
+		  end
+
+		  
+		local url = "https://scriptblox.com/api/script/search?filters=free&q="..G2L["ce"].Text
 		local response = game:HttpGetAsync(url)
 		local decoded = http:JSONDecode(response)
 		for _, script in pairs(decoded.result.scripts) do
             if(script.isUniversal == true) then
-                AddTab("rbxassetid://12742166925", "??", script.title, script.script)
+                AddTab("rbxassetid://12742166887", "??", script.title, script.script)
             else
                 AddTab("https://assetgame.roblox.com/Game/Tools/ThumbnailAsset.ashx?aid="..script.game.gameId.."&fmt=png&wd=420&ht=420", "??", script.title, script.script)
             end
@@ -5062,9 +5082,96 @@ local function C_135()
 	end)
 end;
 task.spawn(C_135);
-btn.MouseButton1Click:Connect(function()
-	execute_script()
-end)
+
 load_saved_scripts()
+if isfile("theme.delta") then
+    local HttpService = game:GetService("HttpService")
+local json = readfile("theme.delta")
+local data = HttpService:JSONDecode(json)
+
+
+local BgColor = Color3.fromHex(data.BgColor)
+local BtnColor = Color3.fromHex(data.BtnColor)
+local MenuColor = Color3.fromHex(data.MenuColor)
+local SettingBtnColor = Color3.fromHex(data.SettingInputColor)
+
+
+local gui = game.CoreGui.DeltaGui
+local BG = gui.MainUi.MainFrame
+
+BG.BackgroundColor3 = BgColor
+gui.FloatingIcon.BackgroundColor3 = BgColor
+
+-- Menus
+    -- Script List
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.MakeScript.TitleScript.BackgroundColor3 = MenuColor
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.MakeScript.ScriptTextbox.BackgroundColor3 = MenuColor
+    --Executor Home
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Home.ScriptTextbox.BackgroundColor3 = MenuColor
+	--Script Search
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Scripts.TitleScript.BackgroundColor3 = MenuColor
+	--Settings
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.WalkSpeed.BackgroundColor3 = MenuColor
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.JumpPower.BackgroundColor3 = MenuColor
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.Gravity.BackgroundColor3 = MenuColor
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.Credits.BackgroundColor3 = MenuColor
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.InviteLink.BackgroundColor3 = MenuColor
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.UnlockFPS.BackgroundColor3 = MenuColor
+
+task.spawn(function()
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Scripts.Scripts.Folder.LIST.BackgroundColor3 = MenuColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.MakeScript.Scripts.LIST.TitleScript.BackgroundColor3 = MenuColor
+	for _, script in pairs(game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.MakeScript.Scripts.ScriptFrame:GetChildren()) do
+		if script.Name == "LIST" then
+			script.TitleScript.BackgroundColor3 = MenuColor
+		end
+	end
+	for _, script in pairs(game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Scripts.Scripts.ScriptFrame:GetChildren()) do
+		if script:IsA("Frame") then
+			script.BackgroundColor3 = MenuColor
+		end
+	end
+end)
+
+
+-- Buttons
+task.spawn(function()
+	for _, inside in pairs(game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs:GetDescendants()) do
+		if inside:IsA("Frame") and inside:FindFirstChild("ImageLabel") and inside:FindFirstChild("TextButton") then
+			inside.BackgroundColor3 = BtnColor
+			inside.ImageLabel.BackgroundColor3 = BtnColor
+			inside.TextButton.BackgroundColor3 = BtnColor
+			
+		end
+	end
+	
+	-- Setting btns
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.Gravity.Reset.BackgroundColor3 = SettingBtnColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.Gravity.Set.BackgroundColor3 = SettingBtnColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.Gravity.TextBox.BackgroundColor3 = SettingBtnColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.JumpPower.Set.BackgroundColor3 = SettingBtnColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.JumpPower.TextBox.BackgroundColor3 = SettingBtnColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.WalkSpeed.Set.BackgroundColor3 = SettingBtnColor
+	game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Settings.WalkSpeed.TextBox.BackgroundColor3 = SettingBtnColor
+	
+end)
+
+if(data.editor_image ~= "") then
+local ImageFile = "delta_theme_image"
+local ImageTransparency = data.image_opacity
+
+
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Home.ScriptTextbox.TextboxBar.Editor.Image = getcustomasset(ImageFile)
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.MakeScript.ScriptTextbox.TextboxBar.Editor.Image = getcustomasset(ImageFile)
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.Home.ScriptTextbox.TextboxBar.Editor.ImageTransparency = ImageTransparency
+game:GetService("CoreGui").DeltaGui.MainUi.MainFrame.Tabs.MakeScript.ScriptTextbox.TextboxBar.Editor.ImageTransparency = ImageTransparency
+
+
+
+end
+
+end
+
+
 
 return G2L["1"], require;
