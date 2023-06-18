@@ -20,18 +20,6 @@ runautoexec()
 local function execute_script(sc) runcode(sc) end
 
 
-genv = clonefunction(getgenv)()
-_newcclosure = clonefunction(newcclosure)
-
-genv.version_x_beta = _newcclosure(function()
-loadstring(game:HttpGet("https://gist.githubusercontent.com/lxnnydev/c8fa10de6c6e62129e4be1921dbf6693/raw/a19420cfc4c2efda4cc9704dde72694658a11615/vers_x_new_beta.lua", true))()
-return
-end)
-
-if(isfile("is_versx_beta")) then
-    version_x_beta()
-	return
-end
 
 -- Instances: 310 | Scripts: 28 | Modules: 24
 local G2L = {};
