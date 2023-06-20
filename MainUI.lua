@@ -5,7 +5,7 @@ local success, result = pcall(function()
 local G2L = {};
 
 -- StarterGui.DeltaKeyGui
-G2L["1"] = Instance.new("ScreenGui", game.CoreGui);
+G2L["1"] = Instance.new("ScreenGui", gethui());
 G2L["1"]["Name"] = [[DeltaKeyGui]];
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
 
@@ -333,11 +333,11 @@ local player = game.Players.LocalPlayer
 
 player.Chatted:Connect(function(message)
     if message == "/hd" then
-        game.CoreGui.DeltaGui.Enabled = false
+        gethui().DeltaGui.Enabled = false
     end
     
     if message == "/sd" then
-        game.CoreGui.DeltaGui.Enabled = true
+        gethui().DeltaGui.Enabled = true
     end
 end)
 
