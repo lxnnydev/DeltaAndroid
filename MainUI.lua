@@ -319,7 +319,7 @@ end
 
 	local btn = G2L["1e"]
 	btn.MouseButton1Click:Connect(function()
-		setclipboard("discord.gg/deltaex")
+		setclipboard("https://discord.gg/a5k2p7smC")
 	game.StarterGui:SetCore("SendNotification", 
 		{
 			Title = "Delta Android";
